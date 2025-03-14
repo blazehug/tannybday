@@ -48,6 +48,10 @@
             position: relative;
             overflow: hidden;
             margin-top: 40px;
+            z-index: 2;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
 
         /* Balloons */
@@ -94,6 +98,7 @@
             max-width: 600px;
             position: relative;
             z-index: 10;
+            flex: 1;
         }
 
         h1, h2 {
@@ -144,6 +149,8 @@
             margin-bottom: 24px;
             max-width: 500px;
             line-height: 1.5;
+            position: relative;
+            z-index: 10;
         }
 
         .sign-in-btn {
@@ -162,21 +169,6 @@
             background-color: #f9fafb;
         }
 
-        /* Social icons */
-        .social-icons {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-icon {
-            color: white;
-            transition: color 0.3s;
-        }
-
-        .social-icon:hover {
-            color: #e9d5ff;
-        }
-
         /* Podium */
         .podium {
             position: absolute;
@@ -191,42 +183,60 @@
             opacity: 0.9;
         }
 
+        /* Sliding Cards (Adapted from css_sliding_cards) */
+        .card-slider {
+            width: 300px; /* Adjusted to fit the right side */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .card {
+            width: 67px; /* Increased by 7px from 60px */
+            height: 87px; /* Increased by 7px from 80px */
+            border-radius: .75rem;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 1rem;
+            transition: width .6s cubic-bezier(.28,-0.03,0,.99);
+            box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
+        }
+
+        input {
+            display: none;
+        }
+
+        input:checked + label {
+            width: 207px; /* Increased by 7px from 200px */
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            h2 {
-                font-size: 2rem;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .date {
-                font-size: 1.2rem;
-            }
-            
-            .content-area {
+            h2 { font-size: 2rem; }
+            h1 { font-size: 2.5rem; }
+            .date { font-size: 1.2rem; }
+            .content-area { 
                 padding: 30px 20px;
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .balloon-1 {
-                width: 60px;
-                height: 60px;
+            .balloon-1 { width: 60px; height: 60px; }
+            .balloon-2 { width: 50px; height: 50px; }
+            .balloon-3 { width: 40px; height: 40px; }
+            .balloon-4 { width: 45px; height: 45px; }
+            .card-slider { 
+                width: 100%; 
+                align-items: center;
             }
-            
-            .balloon-2 {
-                width: 50px;
-                height: 50px;
+            .card { 
+                width: 57px; /* Increased by 7px from 50px */
+                height: 77px; /* Increased by 7px from 70px */
             }
-            
-            .balloon-3 {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .balloon-4 {
-                width: 45px;
-                height: 45px;
+            input:checked + label {
+                width: 157px; /* Increased by 7px from 150px */
             }
         }
     </style>
@@ -256,32 +266,39 @@
                     <h3 class="date">2025</h3>
                 </div>
                 
-                <div class="celebrate-tag">  
-                    <a href="cake.html">LET'S CELEBRATE</a>
-
-                
+                <div class="celebrate-tag">
+                    LET'S CELEBRATE
                 </div>
                 
-                <p class="description">My dearest Tanny, my moon,
+                <p class="description">My dearest Tanny, my moon,  
+                Nineteen years ago, an angel descended, a wild and radiant light gracing this earth—YOU. These nineteen years have painted the world with your beauty, and I stand in awe of the woman you’ve become, fierce and tender, a dream carved from stardust.  
+                Thank you, my love, for choosing me to dance through this life by your side. These past two years with you have been a fascinating journey—each moment a verse in our untamed love song, each glance a spark beneath the night sky. You are my moon, pulling tides of passion through my soul, wild and free, illuminating my darkest corners with your glow.  
+                'In whispers soft as lunar beams,  
+                You weave my heart into your dreams,  
+                A love so vast, a cosmic sea,  
+                My moon, my wild eternity.'  
+                Let’s live the life we’ve dreamed, Tanny—together, hand in hand, chasing horizons where the stars kiss the earth. I love you beyond words, beyond time, with a fire that burns romantically wild and true.</p>
+            </div>
 
-Nineteen years ago, an angel descended, a wild and radiant light gracing this earth—YOU. These nineteen years have painted the world with your beauty, and I stand in awe of the woman you’ve become, fierce and tender, a dream carved from stardust.
+            <!-- Sliding Cards -->
+            <div class="card-slider">
+                <input type="radio" name="card" id="c1" checked>
+                <label class="card" for="c1" style="background-image: url('photo/1.jpg');"></label>
 
-Thank you, my love, for choosing me to dance through this life by your side. These past two years with you have been a fascinating journey—each moment a verse in our untamed love song, each glance a spark beneath the night sky. You are my moon, pulling tides of passion through my soul, wild and free, illuminating my darkest corners with your glow.
+                <input type="radio" name="card" id="c2">
+                <label class="card" for="c2" style="background-image: url('photo/2.jpg');"></label>
 
-'In whispers soft as lunar beams,
+                <input type="radio" name="card" id="c3">
+                <label class="card" for="c3" style="background-image: url('photo/3.jpg');"></label>
 
-You weave my heart into your dreams,
+                <input type="radio" name="card" id="c4">
+                <label class="card" for="c4" style="background-image: url('photo/4.jpg');"></label>
 
-A love so vast, a cosmic sea,
+                <input type="radio" name="card" id="c5">
+                <label class="card" for="c5" style="background-image: url('photo/5.jpg');"></label>
 
-My moon, my wild eternity.'
-
-Let’s live the life we’ve dreamed, Tanny—together, hand in hand, chasing horizons where the stars kiss the earth. I love you beyond words, beyond time, with a fire that burns romantically wild and true..
-                </p>
-        
-                
-                <!-- Social icons -->
-               
+                <input type="radio" name="card" id="c6">
+                <label class="card" for="c6" style="background-image: url('photo/6.jpg');"></label>
             </div>
             
             <!-- Podium/platform -->
@@ -297,7 +314,6 @@ Let’s live the life we’ve dreamed, Tanny—together, hand in hand, chasing h
             const confetti = document.createElement('div');
             confetti.classList.add('confetti');
             
-            // Random position and rotation
             const top = Math.random() * 100;
             const left = Math.random() * 100;
             const rotation = Math.random() * 360;
