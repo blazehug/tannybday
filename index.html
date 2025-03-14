@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #e9d5ff, #d8b4fe);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Confetti elements */
+        .confetti {
+            position: absolute;
+            width: 24px;
+            height: 4px;
+            background-color: #fcd5ce;
+            border-radius: 10px;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Content area */
+        .content-area {
+            background: linear-gradient(to bottom right, #c084fc, #a855f7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .balloon-1 {
+            top: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background-color: #d1d5db;
+        }
+
+        .balloon-2 {
+            top: 80px;
+            right: 128px;
+            width: 64px;
+            height: 64px;
+            background-color: #9ca3af;
+        }
+
+        .balloon-3 {
+            top: 160px;
+            right: 64px;
+            width: 48px;
+            height: 48px;
+            background-color: #8b5cf6;
+        }
+
+        .balloon-4 {
+            top: 240px;
+            right: 112px;
+            width: 56px;
+            height: 56px;
+            background-color: #e5e7eb;
+        }
+
+        /* Main text */
+        .main-text {
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1, h2 {
+            color: white;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .subtitle {
+            color: #f3e8ff;
+            margin-bottom: 16px;
+        }
+
+        .date-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .date {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .celebrate-tag {
+            display: inline-block;
+            background-color: #7e22ce;
+            color: white;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+
+        .description {
+            color: #f3e8ff;
+            margin-bottom: 24px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        .sign-in-btn {
+            background-color: white;
+            color: #7e22ce;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 24px;
+        }
+
+        .sign-in-btn:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Social icons */
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #e9d5ff;
+        }
+
+        /* Podium */
+        .podium {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 80px;
+            background-color: white;
+            border-top-left-radius: 80px;
+            border-top-right-radius: 80px;
+            opacity: 0.9;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .date {
+                font-size: 1.2rem;
+            }
+            
+            .content-area {
+                padding: 30px 20px;
+            }
+            
+            .balloon-1 {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .balloon-2 {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .balloon-3 {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .balloon-4 {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti elements -->
+    <div id="confetti-container"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Content area -->
+        <div class="content-area">
+            <!-- Balloons -->
+            <div class="balloon balloon-1"></div>
+            <div class="balloon balloon-2"></div>
+            <div class="balloon balloon-3"></div>
+            <div class="balloon balloon-4"></div>
+            
+            <!-- Main text -->
+            <div class="main-text">
+                <h2>HAPPY</h2>
+                <h1>BIRTHDAY TO YOU</h1>
+                <p class="subtitle">THE LOVE OF MY LIFE</p>
+                
+                <div class="date-container">
+                    <h3 class="date">MARCH 15</h3>
+                    <h3 class="date">2025</h3>
+                </div>
+                
+                <div class="celebrate-tag">
+                    LET'S CELEBRATE
+                </div>
+                
+                <p class="description">My dearest Tanny, my moon,
+
+Nineteen years ago, an angel descended, a wild and radiant light gracing this earth—YOU. These nineteen years have painted the world with your beauty, and I stand in awe of the woman you’ve become, fierce and tender, a dream carved from stardust.
+
+Thank you, my love, for choosing me to dance through this life by your side. These past two years with you have been a fascinating journey—each moment a verse in our untamed love song, each glance a spark beneath the night sky. You are my moon, pulling tides of passion through my soul, wild and free, illuminating my darkest corners with your glow.
+
+'In whispers soft as lunar beams,
+
+You weave my heart into your dreams,
+
+A love so vast, a cosmic sea,
+
+My moon, my wild eternity.'
+
+Let’s live the life we’ve dreamed, Tanny—together, hand in hand, chasing horizons where the stars kiss the earth. I love you beyond words, beyond time, with a fire that burns romantically wild and true..
+                </p>
+        
+                
+                <!-- Social icons -->
+               
+            </div>
+            
+            <!-- Podium/platform -->
+            <div class="podium"></div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti elements
+        const confettiContainer = document.getElementById('confetti-container');
+        
+        for (let i = 0; i < 20; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Random position and rotation
+            const top = Math.random() * 100;
+            const left = Math.random() * 100;
+            const rotation = Math.random() * 360;
+            
+            confetti.style.top = `${top}%`;
+            confetti.style.left = `${left}%`;
+            confetti.style.transform = `rotate(${rotation}deg)`;
+            
+            confettiContainer.appendChild(confetti);
+        }
+
+        // Add animation to elements when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.main-text > *');
+            
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
